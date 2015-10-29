@@ -77,7 +77,7 @@ def ad_stat(data):
 
 def ecdfgof_test(data, dist, args=(), stat=ad_stat, pdist=ad_unif):
     """
-    Tests goodness-of-fit of data to dist using a distribution-free statistic.
+    Tests goodness of fit of data to dist using a distribution-free statistic.
     """
     if isinstance(data, string_types):
         # Auto-generating samples from a named distribution is not supported.

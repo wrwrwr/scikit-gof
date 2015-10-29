@@ -10,7 +10,7 @@ setup(
     tests_require=('pytest', 'pytest-flake8', 'pytest-isort', 'pytest-readme',
                    'flake8-print', 'flake8-todo', 'pep8-naming'),
 
-    description="Variations on goodness-of-fit tests for SciPy.",
+    description="Variations on goodness of fit tests for SciPy.",
     author="Wojciech Ruszczewski",
     author_email="scipy@wr.waw.pl",
     url="http://github.org/wrwrwr/scikit-gof",
