@@ -1,0 +1,8 @@
+- Watson's test would just require coding the statistic calculation and tests;
+- Code Ziggurat of Marsaglia for testsim, see doi:10.18637/jss.v005.i08;
+- Simard uses Pomeranz recursion as an alternative to Durbin matrix -- its up
+  to 10x faster for small sample counts and statistic values above the mean;
+- vect.varange() could support arrays of starts, ends, counts etc.;
+
+
++ More extensive tests for addist and cvmdist;
