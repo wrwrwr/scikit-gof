@@ -49,9 +49,9 @@ class TestTests:
 
     def test_ks_test(self):
         # Compared with R ks.test().
-        result = ks_test((0.1, 0.4, 0.7), uniform(0, 1))
+        result = ks_test((.1, .4, .7), uniform(0, 1))
         assert allclose(result, (.3, .886222))
-        result = ks_test((0.1, 0.4, 0.7), norm(0, 1))
+        result = ks_test((.1, .4, .7), norm(0, 1))
         assert allclose(result, (.539828, .246999))
 
         # Some of the SciPy's kstest() cases ('norm' without arguments stands
@@ -68,14 +68,20 @@ class TestTests:
 
     def test_cvm_test(self):
         # Compared with cvm.test() from R goftest package.
-        result = cvm_test((0.1, 0.4, 0.7), uniform(0, 1))
+        result = cvm_test((.1, .4, .7), uniform(0, 1))
         assert allclose(result, (.06, .851737))
-        result = cvm_test((0.1, 0.4, 0.7), norm(0, 1))
+        result = cvm_test((.1, .4, .7), norm(0, 1))
         assert allclose(result, (.196853, .281709))
 
     def test_ad_test(self):
         # Versus ad.test() from R goftest.
-        result = ad_test((0.1, 0.4, 0.7), uniform(0, 1))
+        result = ad_test((.1, .4, .7), uniform(0, 1))
         assert allclose(result, (.366028, .875957))
-        result = ad_test((0.1, 0.4, 0.7), norm(0, 1))
+        result = ad_test((.1, .4, .7), norm(0, 1))
         assert allclose(result, (.921699, .390938))
+
+        # Poles of the weight function.
+        result = ad_test((0., .5), uniform(0, 1))
+        assert allclose(result, (float('inf'), 0))
+        result = ad_test((1., .5), uniform(0, 1))
+        assert allclose(result, (float('inf'), 0))
