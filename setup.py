@@ -11,6 +11,7 @@ setup(
                    'flake8-print', 'flake8-todo', 'pep8-naming'),
 
     description="Variations on goodness of fit tests for SciPy.",
+    long_description=open('README.rst').read(),
     author="Wojciech Ruszczewski",
     author_email="scipy@wr.waw.pl",
     url="http://github.org/wrwrwr/scikit-gof",
