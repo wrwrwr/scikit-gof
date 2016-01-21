@@ -72,7 +72,7 @@ class UnifTests:
             assert isclose(cdf(sp, st), pr, rtol=.5e-5)
 
         # Only-11-digits of accuracy example from doi:10.18637/jss.v026.i02.
-        assert isclose(cdf(16000, .0107438), .9506002390950460063, rtol=.5e-13)
+        assert isclose(cdf(16000, .0107438), .9506002390950460063, rtol=.5e-12)
 
         # NaNs in the Marsaglia code, after doi:10.18637/jss.v039.i11.
         assert isclose(cdf(11000, .0004135), .11746e-264, rtol=.5e-4)
