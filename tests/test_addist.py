@@ -50,7 +50,8 @@ class UnifTests:
         assert allclose(ps, (0, .677243580297, .962672033688), rtol=.5e-12)
 
     def test_inf(self):
-        # Values for pinf from doi:10.18637/jss.v009.i02.
+        # Values for pinf from doi:10.18637/jss.v009.i02 (the original 1954
+        # doi:10.2307/2281537 gives respectively 1.933, 2.492, and 3.857).
         ps = [ad_unif_inf(s) for s in (1.932957833, 2.492367160, 3.878125022)]
         assert allclose(ps, (.90, .95, .99), rtol=.5e-4)
 
