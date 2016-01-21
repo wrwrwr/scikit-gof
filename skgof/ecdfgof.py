@@ -69,6 +69,10 @@ def cvm_stat(data):
 def ad_stat(data):
     """
     Calculates the Anderson-Darling statistic for sorted values from U(0, 1).
+
+    The statistic is not defined if any of the values is exactly 0 or 1. You
+    will get infinity as a result and a divide-by-zero warning for such values.
+    The warning can be silenced or raised using numpy.errstate(divide=...).
     """
     samples = len(data)
     factors = arange(1, 2 * samples, 2)
