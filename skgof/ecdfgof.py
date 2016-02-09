@@ -79,7 +79,8 @@ def ad_stat(data):
     return -samples - (factors * log(data * (1 - data[::-1]))).sum() / samples
 
 
-def ecdfgof_test(data, dist, args=(), stat=ad_stat, pdist=ad_unif):
+def ecdfgof_test(data, dist, args=(), stat=ad_stat, pdist=ad_unif,
+                 assume_sorted=False):
     """
     Tests goodness of fit of data to dist using a distribution-free statistic.
     """
@@ -90,7 +91,9 @@ def ecdfgof_test(data, dist, args=(), stat=ad_stat, pdist=ad_unif):
         dist = getattr(distributions, dist)(*args)
     elif args:
         dist = dist(args)
-    statistic = stat(dist.cdf(sort(data)))
+    if not assume_sorted:
+        data = sort(data)
+    statistic = stat(dist.cdf(data))
     pvalue = pdist(len(data)).sf(statistic)
     return GofResult(statistic, pvalue)
 

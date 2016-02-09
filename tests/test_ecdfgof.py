@@ -3,6 +3,7 @@ from functools import partial
 
 from numpy import allclose, array, isclose, linspace
 from scipy.stats import norm, uniform
+from pytest import mark
 
 from skgof.ecdfgof import (ad_stat, ad_test, cvm_stat, cvm_test,
                            ks_stat, ks_test, ecdfgof_test)
@@ -85,3 +86,71 @@ class TestTests:
         assert allclose(result, (float('inf'), 0))
         result = ad_test((1., .5), uniform(0, 1))
         assert allclose(result, (float('inf'), 0))
+
+
+class TestBenchmarks:
+    @mark.benchmark(group='ks-test-small')
+    def benchmark_ks_test_small(self, benchmark):
+        result = benchmark(ks_test, linspace(0, 1, 1e3), uniform(0, 1))
+        assert allclose(result, (0., 1.), atol=.5e-2)
+
+    @mark.benchmark(group='ks-test-small')
+    def benchmark_ks_test_small_sorted(self, benchmark):
+        result = benchmark(ks_test, linspace(0, 1, 1e3), uniform(0, 1),
+                           assume_sorted=True)
+        assert allclose(result, (0., 1.), atol=.5e-2)
+
+    @mark.benchmark(group='cvm-test-small')
+    def benchmark_cvm_test_small(self, benchmark):
+        result = benchmark(cvm_test, linspace(0, 1, 1e3), uniform(0, 1))
+        assert allclose(result, (0., 1.), atol=.5e-2)
+
+    @mark.benchmark(group='cvm-test-small')
+    def benchmark_cvm_test_small_sorted(self, benchmark):
+        result = benchmark(cvm_test, linspace(0, 1, 1e3), uniform(0, 1),
+                           assume_sorted=True)
+        assert allclose(result, (0., 1.), atol=.5e-2)
+
+    @mark.benchmark(group='ad-test-small')
+    def benchmark_ad_test_small(self, benchmark):
+        result = benchmark(ad_test, linspace(0, 1, 1e3)[1:-1], uniform(0, 1))
+        assert allclose(result, (0., 1.), atol=.5e-2)
+
+    @mark.benchmark(group='ad-test-small')
+    def benchmark_ad_test_small_sorted(self, benchmark):
+        result = benchmark(ad_test, linspace(0, 1, 1e3)[1:-1], uniform(0, 1),
+                           assume_sorted=True)
+        assert allclose(result, (0., 1.), atol=.5e-2)
+
+    @mark.benchmark(group='ks-test-large')
+    def benchmark_ks_test_large(self, benchmark):
+        result = benchmark(ks_test, linspace(0, 1, 1e6), uniform(0, 1))
+        assert allclose(result, (0., 1.), atol=.5e-4)
+
+    @mark.benchmark(group='ks-test-large')
+    def benchmark_ks_test_large_sorted(self, benchmark):
+        result = benchmark(ks_test, linspace(0, 1, 1e6), uniform(0, 1),
+                           assume_sorted=True)
+        assert allclose(result, (0., 1.), atol=.5e-4)
+
+    @mark.benchmark(group='cvm-test-large')
+    def benchmark_cvm_test_large(self, benchmark):
+        result = benchmark(cvm_test, linspace(0, 1, 1e6), uniform(0, 1))
+        assert allclose(result, (0., 1.), atol=.5e-4)
+
+    @mark.benchmark(group='cvm-test-large')
+    def benchmark_cvm_test_large_sorted(self, benchmark):
+        result = benchmark(cvm_test, linspace(0, 1, 1e6), uniform(0, 1),
+                           assume_sorted=True)
+        assert allclose(result, (0., 1.), atol=.5e-4)
+
+    @mark.benchmark(group='ad-test-large')
+    def benchmark_ad_test_large(self, benchmark):
+        result = benchmark(ad_test, linspace(0, 1, 1e6)[1:-1], uniform(0, 1))
+        assert allclose(result, (0., 1.), atol=.5e-4)
+
+    @mark.benchmark(group='ad-test-large')
+    def benchmark_ad_test_large_sorted(self, benchmark):
+        result = benchmark(ad_test, linspace(0, 1, 1e6)[1:-1], uniform(0, 1),
+                           assume_sorted=True)
+        assert allclose(result, (0., 1.), atol=.5e-4)
