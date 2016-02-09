@@ -7,7 +7,8 @@ setup(
     version='0.0.2',
     packages=('skgof',),
     install_requires=('numpy>=1.10', 'scipy'),
-    tests_require=('pytest', 'pytest-flake8', 'pytest-isort', 'pytest-readme',
+    tests_require=('pytest', 'pytest-benchmark', 'pytest-flake8',
+                   'pytest-isort', 'pytest-readme',
                    'flake8-print', 'flake8-todo', 'pep8-naming'),
 
     description="Variations on goodness of fit tests for SciPy.",
