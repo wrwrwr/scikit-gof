@@ -64,26 +64,27 @@ If your samples are very large and you have them sorted ahead of time, pass
 Extending
 =========
 
-Each simple test is composed of two phases: calculating the test statistic and
+Simple tests are composed of two phases: calculating the test statistic and
 determining how likely is the resulting value (under the hypothesis).
-New tests may be defined by providing a different statistic calculation routine
-or an alternative distribution for a statistic.
+New tests may be defined by providing a new statistic calculation routine or an
+alternative distribution for a statistic.
 
 Functions calculating statistics are given evaluations of the reference
 cumulative distribution function on sorted data and are expected to return
 a single number.
-For a simple test, if the sample indeed comes from the hypothesized
-(continuous) distribution, the values passed to the statistic function should
-be uniformly distributed over [0, 1].
-Here is a simplistic example of how a statistic function might look:
+For a simple test, if the sample indeed comes from the hypothesized (continuous)
+distribution, the values passed to the function should be uniformly distributed
+over [0, 1].
+
+Here is a simplistic example of how a statistic function might look like:
 
 .. code:: python
 
     def ex_stat(data):
         return abs(data.sum() - data.size / 2)
 
-Statistic calculation functions for the provided tests, ``ks_stat()``,
-``cvm_stat()``, and ``ad_stat()``, can be imported from ``skgof.ecdfgof``.
+Statistic functions for the provided tests, ``ks_stat()``, ``cvm_stat()``,
+and ``ad_stat()``, can be imported from ``skgof.ecdfgof``.
 
 Statistic distributions should derive from ``rv_continuous`` and implement
 at least one of the abstract ``_cdf()`` or ``_pdf()`` methods (you might
@@ -105,7 +106,7 @@ The provided distributions live in separate modules, respectively ``ksdist``,
 ``cvmdist``, and ``addist``.
 
 Once you have a statistic calculation function and a statistic distribution the
-two parts can be conveniently combined using ``simple_test``:
+two parts can be combined using ``simple_test``:
 
 .. code:: python
 
@@ -133,4 +134,4 @@ Installation
 
 Requires recent versions of Python (> 3), NumPy (>= 1.10) and SciPy.
 
-Please fix or point out any errors, inaccuracies or typos you may notice.
+Please fix or point out any errors, inaccuracies or typos you notice.
