@@ -9,8 +9,8 @@ def simulator(stat, samples, precision, rounds):
     """
     Simulates a distribution-free statistical test to estimate its p-values.
 
-    The first argument, statistic, should be a function that computes the
-    simulated test for a vector of ordered, uniform(0, 1) samples.
+    The first argument should be a function that computes the simulated
+    statistic for a vector of ordered, uniform(0, 1) samples.
 
     The second argument, samples, tells how many samples to generate and test
     with. To generate a typical p-values table you would run the function for
@@ -30,12 +30,12 @@ def simulator(stat, samples, precision, rounds):
         from skgof.ecdfgof import ks_stat
 
         # Repeat the simulation one million times for vectors of 10 samples.
-        ks10 = simulator(ks_stat, 10, 100, 1000000)
+        ks10 = simulator(ks_stat, 10, 100, 1e6)
 
         # Get the approximate 95% critical value (to about 2 decimal digits).
         ks10[94]  # 0.409...
-
     """
+    rounds = int(rounds)
     data = random_sample(size=(rounds, samples))
     data.sort(axis=1)
     stats = fromiter((stat(d) for d in data), float, rounds)
