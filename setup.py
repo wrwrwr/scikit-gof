@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='scikit-gof',
-    version='0.1.0',
+    version='0.1.1',
     packages=('skgof',),
     install_requires=('numpy>=1.10', 'scipy'),
     tests_require=('pytest', 'pytest-benchmark', 'pytest-flake8',
