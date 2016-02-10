@@ -6,7 +6,7 @@ from scipy.stats import norm, uniform
 from pytest import mark
 
 from skgof.ecdfgof import (ad_stat, ad_test, cvm_stat, cvm_test,
-                           ks_stat, ks_test, ecdfgof_test)
+                           ks_stat, ks_test, simple_test)
 
 data1 = array((.125, .375, .625, .875))
 data2 = array((.1, .2, .3, .4))
@@ -39,14 +39,14 @@ class TestTests:
         # Custom statistic calculation / distribution and object-like result.
         stat = lambda data: 3
         pdist = lambda samples: namedtuple('FD', 'sf')(sf=lambda statistic: .5)
-        result = ecdfgof_test((1, 2, 3), norm, stat=stat, pdist=pdist)
+        result = simple_test((1, 2, 3), norm, stat=stat, pdist=pdist)
         assert result.statistic == 3 and result.pvalue == .5
 
     def test_args(self):
         # It should be possible to specify a frozen distribution or a name and
         # parameters.
-        assert ecdfgof_test((.2, .5, .8), uniform(1, 2)).pvalue == 0
-        assert ecdfgof_test((.2, .5, .8), 'uniform', args=(1, 2)).pvalue == 0
+        assert simple_test((.2, .5, .8), uniform(1, 2)).pvalue == 0
+        assert simple_test((.2, .5, .8), 'uniform', args=(1, 2)).pvalue == 0
 
     def test_ks_test(self):
         # Compared with R ks.test().
