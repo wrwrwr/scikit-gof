@@ -31,27 +31,27 @@ Simple tests
 Scikit-gof currently only offers three nonparametric tests that let you
 compare a sample with a reference probability distribution. These are:
 
-`ks_test()`
+``ks_test()``
     Kolmogorov-Smirnov supremum statistic; almost the same as
-    `scipy.stats.kstest()` with `alternative='two-sided'` but with (hopefully)
-    somewhat more precise p-value calculation;
+    ``scipy.stats.kstest()`` with ``alternative='two-sided'`` but with
+    (hopefully) somewhat more precise p-value calculation;
 
-`cvm_test()`
+``cvm_test()``
     Cramer-von Mises L2 statistic, with a rather crude estimation of the
     statistic distribution (but seemingly the best available);
 
-`ad_test()`
+``ad_test()``
     Anderson-Darling statistic with a fair approximation of its distribution;
-    unlike the composite `scipy.stats.anderson()` this one needs a fully
+    unlike the composite ``scipy.stats.anderson()`` this one needs a fully
     specified hypothesized distribution.
 
 Simple test functions use a common interface, taking as the first argument the
-data (sample) to be compared and as the second argument a frozen `scipy.stats`
+data (sample) to be compared and as the second argument a frozen ``scipy.stats``
 distribution.
-They return a named tuple with two fields: `statistic` and `pvalue`.
+They return a named tuple with two fields: ``statistic`` and ``pvalue``.
 
-For a simple example consider a hypothesis that the sample (.4, .1, .7) comes
-from the uniform distribution supported on [0, 1]:
+For a simple example consider the hypothesis that the sample (.4, .1, .7) comes
+from the uniform distribution on [0, 1]:
 
 .. code:: python
 
@@ -59,7 +59,7 @@ from the uniform distribution supported on [0, 1]:
         print("Hypothesis rejected with 5% significance.")
 
 If your samples are very large and you have them sorted ahead of time, pass
-`assume_sorted=True` to save some time that would be wasted resorting.
+``assume_sorted=True`` to save some time that would be wasted resorting.
 
 Extending
 =========
@@ -82,13 +82,13 @@ Here is a simplistic example of how a statistic function might look:
     def ex_stat(data):
         return abs(data.sum() - data.size / 2)
 
-Statistic calculation functions for the provided tests, `ks_stat()`,
-`cvm_stat()`, and `ad_stat()`, can be imported from `skgof.ecdfgof`.
+Statistic calculation functions for the provided tests, ``ks_stat()``,
+``cvm_stat()``, and ``ad_stat()``, can be imported from ``skgof.ecdfgof``.
 
-Statistic distributions should derive from `rv_continuous` and implement at
-least one of the abstract `_cdf()` or `_pdf()` methods (you might also consider
-directly coding `_sf()` for increased precision of results close to 1).
-For example:
+Statistic distributions should derive from ``rv_continuous`` and implement
+at least one of the abstract ``_cdf()`` or ``_pdf()`` methods (you might
+also consider directly coding ``_sf()`` for increased precision of results
+close to 1). For example:
 
 .. code:: python
 
@@ -101,11 +101,11 @@ For example:
 
     ex_unif = ex_unif_gen(a=0, name='ex-unif', shapes='samples')
 
-The provided distributions live in separate modules, respectively `ksdist`,
-`cvmdist`, and `addist`.
+The provided distributions live in separate modules, respectively ``ksdist``,
+``cvmdist``, and ``addist``.
 
 Once you have a statistic calculation function and a statistic distribution the
-two parts can be conveniently combined using `simple_test`:
+two parts can be conveniently combined using ``simple_test``:
 
 .. code:: python
 
@@ -114,7 +114,7 @@ two parts can be conveniently combined using `simple_test`:
 
     ex_test = partial(simple_test, stat=ex_stat, pdist=ex_unif)
 
-*Exercise*: The example test has a fundamental flaw. Can you point it out?
+**Exercise**: The example test has a fundamental flaw. Can you point it out?
 
 ..  The test is not consistent under all alternatives. For instance, if the
     hypothesis was that samples come from the uniform distribution on [0, 1],
