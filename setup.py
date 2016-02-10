@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='scikit-gof',
-    version='0.0.2',
+    version='0.1.0',
     packages=('skgof',),
     install_requires=('numpy>=1.10', 'scipy'),
     tests_require=('pytest', 'pytest-benchmark', 'pytest-flake8',
@@ -18,7 +18,7 @@ setup(
     url="http://github.org/wrwrwr/scikit-gof",
     license="MIT",
     classifiers=(
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Science/Research",
         "Topic :: Scientific/Engineering :: Information Analysis",
         "License :: OSI Approved :: MIT License",
