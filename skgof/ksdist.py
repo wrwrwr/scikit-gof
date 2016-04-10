@@ -91,6 +91,7 @@ def ks_unif_durbin_matrix(samples, statistic):
     """
     # Construct the Durbin matrix.
     h, k = modf(samples * statistic)
+    k = int(k)
     h = 1 - h
     m = 2 * k + 1
     A = tri(m, k=1)
