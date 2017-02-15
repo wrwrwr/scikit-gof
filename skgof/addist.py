@@ -29,6 +29,7 @@ class ad_unif_gen(rv_continuous):
         pinf = ad_unif_inf(statistic)
         return pinf + ad_unif_fix(samples, pinf)
 
+
 ad_unif = ad_unif_gen(a=0, name='ad-unif', shapes='samples')
 
 

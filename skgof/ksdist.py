@@ -72,6 +72,7 @@ class ks_unif_gen(rv_continuous):
             # Hence, an approximate direct sf calculation may be more precise.
             return min(1., 2 * smirnov(samples, statistic))
 
+
 ks_unif = ks_unif_gen(a=0, name='ks-unif', shapes='samples')
 
 

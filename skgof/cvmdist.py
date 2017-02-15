@@ -33,6 +33,7 @@ class cvm_unif_gen(rv_continuous):
         # Asymptotic distribution with a one-term correction (equation 1.8).
         return cvm_unif_inf(statistic) + cvm_unif_fix1(statistic) / samples
 
+
 cvm_unif = cvm_unif_gen(a=0, name='cvm-unif', shapes='samples')
 
 
