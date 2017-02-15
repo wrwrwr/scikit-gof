@@ -1,3 +1,5 @@
+from __future__ import division
+
 from numpy import arange
 from numpy.testing import assert_array_equal
 

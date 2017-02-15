@@ -2,6 +2,8 @@
 A collection of reference values for the Kolmogorov-Smirnov two-sided,
 one-sample, distribution-free statistic.
 """
+from __future__ import division
+
 from fractions import Fraction as F
 from math import sqrt
 

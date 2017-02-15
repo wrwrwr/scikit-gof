@@ -1,6 +1,8 @@
 """
 A primitive statistic distribution simulation.
 """
+from __future__ import division
+
 from numpy import fromiter
 from numpy.random import random_sample
 

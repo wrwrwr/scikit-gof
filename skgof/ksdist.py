@@ -3,6 +3,8 @@ Distributions of the Kolmogorov-Smirnov supremum statistic.
 
 After doi:10.18637/jss.v008.i18 and doi:10.18637/jss.v039.i11.
 """
+from __future__ import division
+
 from fractions import Fraction
 from math import factorial, floor
 
@@ -141,9 +143,10 @@ def ks_unif_durbin_recurrence_rational(samples, statistic):
     the result is also a Fraction. See: doi:10.18637/jss.v026.i02.
     """
     t = statistic * samples
-    ft1 = floor(t) + 1
-    fmt1 = floor(-t) + 1
-    fdt1 = floor(2 * t) + 1
+    # Python 3: int()s can be skipped.
+    ft1 = int(floor(t)) + 1
+    fmt1 = int(floor(-t)) + 1
+    fdt1 = int(floor(2 * t)) + 1
     qs = [Fraction(i ** i, factorial(i)) for i in range(ft1)]
     qs.extend(Fraction(i ** i, factorial(i)) - 2 * t *
                     sum((t + j) ** (j - 1) / factorial(j) *

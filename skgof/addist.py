@@ -3,6 +3,8 @@ Distributions of the Anderson-Darling statistic.
 
 After doi:18637/jss.v009.i02.
 """
+from __future__ import division
+
 from numpy import exp, log, sqrt
 from scipy.stats import rv_continuous
 

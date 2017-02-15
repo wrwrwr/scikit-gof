@@ -32,6 +32,8 @@ for all three statistics. Their distributions are split into separate modules
 as calculating each is a small research story -- see `ksdist`, `cvmdist`, and
 `addist` for details and further references.
 """
+from __future__ import division
+
 from collections import namedtuple
 from functools import partial
 

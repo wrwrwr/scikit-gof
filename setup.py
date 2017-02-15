@@ -4,7 +4,7 @@ from setuptools import setup
 
 meta = {
     'name': 'scikit-gof',
-    'version': '0.1.2',
+    'version': '0.1.3',
     'packages': ('skgof',),
     'install_requires': (
         'numpy>=1.10',
@@ -31,7 +31,7 @@ meta = {
         "Intended Audience :: Science/Research",
         "Topic :: Scientific/Engineering :: Information Analysis",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.5"
     )
 }

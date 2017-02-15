@@ -3,6 +3,8 @@ Distributions of the Cramer-von Mises statistic.
 
 After doi:10.2307/2346175.
 """
+from __future__ import division
+
 from numpy import arange, dot, exp, newaxis, pi, tensordot
 from scipy.special import gamma, kv
 from scipy.stats import rv_continuous

@@ -1,3 +1,5 @@
+from __future__ import division
+
 from fractions import Fraction as F
 from functools import partial
 from math import sqrt

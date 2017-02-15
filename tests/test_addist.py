@@ -1,3 +1,5 @@
+from __future__ import division
+
 from functools import partial
 
 from numpy import allclose, isclose

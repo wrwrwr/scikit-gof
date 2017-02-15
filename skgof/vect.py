@@ -13,6 +13,8 @@ Vectorize() with support for decorating methods; for example::
                 return g(x)  # A different expensive calculation.
 
 """
+from __future__ import division
+
 from numpy import arange, stack, vectorize as numpy_vectorize
 
 
