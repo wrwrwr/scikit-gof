@@ -24,7 +24,7 @@ meta = {
     'long_description': open('README.rst').read(),
     'author': "Wojciech Ruszczewski",
     'author_email': "scipy@wr.waw.pl",
-    'url': "http://github.org/wrwrwr/scikit-gof",
+    'url': "https://github.com/wrwrwr/scikit-gof",
     'license': "MIT",
     'classifiers': (
         "Development Status :: 4 - Beta",
